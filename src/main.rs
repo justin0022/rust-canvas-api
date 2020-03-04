@@ -5,7 +5,6 @@ use std::env;
 use listenfd::ListenFd;
 use serde::{Deserialize, Serialize};
 use reqwest::Error;
-mod api_error;
 
 #[derive(Debug, Serialize, Deserialize)]
 struct User {
@@ -16,11 +15,6 @@ struct User {
     short_name: String,
     avatar_url: String
 }
-
-// fn construct_headers() -> HeaderMap {
-//     let mut headers = HeaderMap::new();
-//     headers.insert()
-// }
 
 async fn get_canvas_self() -> Result<User, Error> {
     dotenv().ok();
@@ -43,7 +37,7 @@ async fn get_canvas_self() -> Result<User, Error> {
 
 // #[get("/canvas_self")]
 // async fn canvas_self() -> Result<HttpResponse, Error> {
-//     let self_response = get_canvas_self().await;
+//     let self_response = get_canvas_self().await?;
 //     Ok(HttpResponse::Ok().json(self_response))
 // }
 
